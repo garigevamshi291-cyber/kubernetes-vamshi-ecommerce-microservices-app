@@ -130,4 +130,6 @@ kubectl get ingress -n google
 - sudo dnf install mariadb105-server -y
 - on backend dirictory run test.sql
 - mysql -h rds-endpoint -u admin -p<veerasir> < test.sql
+
+
 **Last Updated:** March 2026
