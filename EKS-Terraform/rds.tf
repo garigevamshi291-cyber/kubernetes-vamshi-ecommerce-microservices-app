@@ -8,9 +8,9 @@ resource "aws_db_instance" "rds" {
   engine_version         = "8.4.8"
   instance_class         = "db.t3.micro"
   multi_az               = true
-  db_name                = "mydb"
+  db_name                = "mysql"
   username               = "admin"
-  password               = "Cloud123"
+  password               = "cloud123"
   skip_final_snapshot    = true
   vpc_security_group_ids = [aws_security_group.allow_all.id]
   depends_on = [ aws_db_subnet_group.sub-grp ]
