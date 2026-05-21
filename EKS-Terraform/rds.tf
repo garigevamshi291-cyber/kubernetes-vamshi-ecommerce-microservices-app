@@ -8,7 +8,7 @@ resource "aws_db_instance" "rds" {
   engine_version         = "8.4.8"
   instance_class         = "db.t3.micro"
   multi_az               = false
-  db_name                = "mysql"
+  db_name                = "mydb"
   username               = "admin"
   password               = "cloud123"
   skip_final_snapshot    = true
