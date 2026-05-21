@@ -4,8 +4,10 @@ metadata:
   name: mysql-init-script
 data:
   test.sql: |
-    CREATE DATABASE IF NOT EXISTS cloud;
+  CREATE DATABASE IF NOT EXISTS cloud;
     USE cloud;
+
+SET FOREIGN_KEY_CHECKS = 0;    
 
 DROP TABLE IF EXISTS order_items;
 DROP TABLE IF EXISTS payments;
