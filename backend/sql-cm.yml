@@ -2,21 +2,22 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: mysql-init-script
+
 data:
   test.sql: |
-  CREATE DATABASE IF NOT EXISTS cloud;
+    CREATE DATABASE IF NOT EXISTS cloud;
     USE cloud;
 
-SET FOREIGN_KEY_CHECKS = 0;    
+    SET FOREIGN_KEY_CHECKS = 0;
 
-DROP TABLE IF EXISTS order_items;
-DROP TABLE IF EXISTS payments;
-DROP TABLE IF EXISTS recharges;
-DROP TABLE IF EXISTS service_activity;
-DROP TABLE IF EXISTS cart_items;
-DROP TABLE IF EXISTS pending_signups;
-DROP TABLE IF EXISTS orders;
-DROP TABLE IF EXISTS users;
+    DROP TABLE IF EXISTS order_items;
+    DROP TABLE IF EXISTS payments;
+    DROP TABLE IF EXISTS recharges;
+    DROP TABLE IF EXISTS service_activity;
+    DROP TABLE IF EXISTS cart_items;
+    DROP TABLE IF EXISTS pending_signups;
+    DROP TABLE IF EXISTS orders;
+    DROP TABLE IF EXISTS users;
 
     CREATE TABLE users (
         id INT AUTO_INCREMENT PRIMARY KEY,
