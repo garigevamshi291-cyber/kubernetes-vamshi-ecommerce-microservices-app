@@ -1,24 +1,31 @@
-
 apiVersion: apps/v1
 kind: Deployment
+
 metadata:
   name: backend-deployment
   labels:
     app: backend
+
 spec:
   replicas: 2
+
   selector:
     matchLabels:
       app: backend
+
   template:
     metadata:
       labels:
         app: backend
+
     spec:
       containers:
         - name: backend-container
           image: 452574031229.dkr.ecr.us-east-1.amazonaws.com/shopping-site-backend:e88163e
+
+          ports:
             - containerPort: 5000
+
           envFrom:
             - configMapRef:
                 name: backend-config
@@ -26,13 +33,17 @@ spec:
 ---
 apiVersion: v1
 kind: Service
+
 metadata:
   name: backend-service
+
 spec:
   selector:
     app: backend
+
   ports:
     - protocol: TCP
       port: 80
       targetPort: 5000
+
   type: ClusterIP
