@@ -53,7 +53,7 @@ jobs:
       - name: 🛠 Build and Push Docker Images
         run: |
           set -e
-          IMAGE_TAG="${GITHUB_SHA}"
+          IMAGE_TAG=$(echo $GITHUB_SHA | cut -c1-7)
 
           # -------- Frontend --------
           for service in $FRONTEND_SERVICES; do
@@ -77,6 +77,10 @@ jobs:
             docker push $IMAGE_URI
 
             sed -i "/image:/c\        image: $IMAGE_URI" "$FOLDER/deployment.yml"
+            
+            echo "Updated frontend deployment:"
+            cat "$FOLDER/deployment.yml"
+            
           done
 
           # -------- Backend --------
@@ -94,8 +98,10 @@ jobs:
           docker build -t $IMAGE_URI $FOLDER
           docker push $IMAGE_URI
 
-         sed -i "/image:/c\        image: $IMAGE_URI" "$FOLDER/backend-deployment.yml"
-
+           sed -i "/image:/c\        image: $IMAGE_URI" "$FOLDER/backend-deployment.yml"
+           
+           echo "Updated backend deployment:"
+           cat "$FOLDER/backend-deployment.yml"
       # -------------------------
       # Commit YAML changes
       # -------------------------
